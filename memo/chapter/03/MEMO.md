@@ -49,3 +49,28 @@ const config = {
 }
 const peerConnection = new RTCPeerConnection(config);
 ```
+
+#### addTrack
+
+- MediaStreamTrackをPeerConnectionに追加するメソッド
+  - 自動的にTrackの情報を相手(対向のPeer)に送信できる
+
+```js
+const config = {
+  iceServers: [
+    {urls: 'stun:stun.l.google.com:19302'},
+  ]
+}
+const peerConnection = new RTCPeerConnection(config);
+const stream = await navigator.mediaDevices.getUserMedia({video: true, audio: true});
+stream.getTracks().forEach(track => {
+  peerConnection.addTrack(track, stream);
+});
+```
+
+#### addTransceiver
+
+- MediaStreamTrackをPeerConnectionに追加するメソッド
+  - addTrackと違い、メディアを送受信するかどうかを指定できる
+
+```js
