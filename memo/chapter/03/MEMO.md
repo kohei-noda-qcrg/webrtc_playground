@@ -36,3 +36,16 @@ navigator.mediaDevices.getDisplayMedia({video: true, audio: true})
     // エラー時の処理
   });
 ```
+
+### RTCPeerConnection
+
+- P2P通信を行うためのPeerConnectionを作成するためのAPI
+
+```js
+const config = {
+  iceServers: [
+    {urls: 'stun:stun.l.google.com:19302'},
+  ]
+}
+const peerConnection = new RTCPeerConnection(config);
+```
